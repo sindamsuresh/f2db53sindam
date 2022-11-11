@@ -11,10 +11,15 @@ router.get('/', api_controller.api);
 router.post('/mercedesBenz', mercedesBenz_controller.mercedesBenz_create_post);
 // DELETE request to delete mercedesBenz.
 router.delete('/mercedesBenz/:id', mercedesBenz_controller.mercedesBenz_delete);
+
 // PUT request to update mercedesBenz.
 router.put('/mercedesBenz/:id', mercedesBenz_controller.mercedesBenz_update_put);
+
+
 // GET request for one mercedesBenz.
 router.get('/mercedesBenz/:id', mercedesBenz_controller.mercedesBenz_detail);
+
+
 // GET request for list of all mercedesBenz items.
 router.get('/mercedesBenz', mercedesBenz_controller.mercedesBenz_list);
 module.exports = router;
