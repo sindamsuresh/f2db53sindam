@@ -13,13 +13,21 @@ exports.mercedesBenz_list = async function (req, res) {
     }
 };
 
-// for a specific mercedesBenz.
-exports.mercedesBenz_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: mercedesBenz detail: ' + req.params.id);
+
+// for a specific Costume.
+exports.mercedesBenz_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await MercedesBenz.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 
 // Handle Costume create on POST.
-exports.mercedesBenz_create_post = async function(req, res) {
+exports.mercedesBenz_create_post = async function (req, res) {
     console.log(req.body)
     let document = new MercedesBenz();
     // We are looking for a body, since POST does not have query parameters.
@@ -29,15 +37,15 @@ exports.mercedesBenz_create_post = async function(req, res) {
     document.carModel = req.body.carModel;
     document.carPrice = req.body.carPrice;
     document.carColor = req.body.carColor;
-    try{
-    let result = await document.save();
-    res.send(result);
+    try {
+        let result = await document.save();
+        res.send(result);
     }
-    catch(err){
-    res.status(500);
-    res.send(`{"error": ${err}}`);
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
     }
-   };
+};
 // Handle mercedesBenz delete form on DELETE.
 exports.mercedesBenz_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: mercedesBenz delete DELETE ' + req.params.id);
