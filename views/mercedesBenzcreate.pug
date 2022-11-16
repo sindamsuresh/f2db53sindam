@@ -1,0 +1,32 @@
+extends layout
+block content
+ h1= title
+ form(id='MercedesBenzForm', action="/resource/mercedesBenz", method="POST")
+  div.form-group
+    label.mercedesAttr(for='carModel') Car Model 
+    input#carModel(type='text', name='carModel')
+  div.form-group
+    label.mercedesAttr(for='carPrice') Car Price
+    input#carPrice(type='number', name='carPrice')
+  div.form-group
+    label.mercedesAttr(for='carColor') Car Color
+    input#carColor(type='text', name='carColor')
+  input(type="submit")
+ script.
+  document.forms['MercedesBenzForm'].addEventListener('submit', (event) => {
+  console.log('testtt');
+  event.preventDefault();
+  // TODO do something here to show user that form is being submitted
+  fetch(event.target.action, {
+  method: 'POST',
+  body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+  }).then((resp) => {
+  return resp.json(); // or resp.text() or whatever the server sends
+  }).then((body) => {
+  alert("Save succeded")
+  // TODO handle body
+  }).catch((error) => {
+  // TODO handle error
+  alert("Save failed " + error )
+  });
+  });

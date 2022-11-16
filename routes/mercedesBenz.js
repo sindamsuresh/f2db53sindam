@@ -18,6 +18,9 @@ router.get('/', mercedesBenz_controller.mercedesBenz_view_all_Page);
 /* GET detail mercedesBenz page */
 router.get('/detail', mercedesBenz_controller.mercedesBenz_view_one_Page);
 
+/* GET create mercedesBenz page */
+router.get('/create', mercedesBenz_controller.mercedesBenz_create_Page);
+
 
 
 module.exports = router;

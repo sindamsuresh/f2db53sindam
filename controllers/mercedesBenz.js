@@ -102,8 +102,21 @@ exports.mercedesBenz_view_one_Page = async function (req, res) {
     console.log("single view for id " + req.query.id)
     try {
         result = await MercedesBenz.findById(req.query.id)
-        res.render('MercedesBenzdetail',
-            { title: 'MercedesBenz Detail', toShow: result });
+        res.render('mercedesBenzdetail', { title: 'MercedesBenz Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle building the view for creating a mercedesBenz.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.mercedesBenz_create_Page = function (req, res) {
+    console.log("create view")
+    try {
+        res.render('mercedesBenzcreate', { title: 'MercedesBenz Create' });
     }
     catch (err) {
         res.status(500)
