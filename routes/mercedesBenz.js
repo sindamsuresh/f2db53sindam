@@ -12,6 +12,12 @@
 var express = require('express');
 var mercedesBenz_controller = require('../controllers/mercedesBenz');
 var router = express.Router();
-/* GET costumes */
+/* GET mercedesBenz */
 router.get('/', mercedesBenz_controller.mercedesBenz_view_all_Page);
+
+/* GET detail mercedesBenz page */
+router.get('/detail', mercedesBenz_controller.mercedesBenz_view_one_Page);
+
+
+
 module.exports = router;

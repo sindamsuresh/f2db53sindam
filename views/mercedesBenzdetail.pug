@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let carid = toShow._id
+ - let carModel = toShow.carModel
+ - let carPrice = toShow.carPrice
+ - let carColor = toShow.carColor
+ div
+ div.row
+ div(class='mercedesAttr mr-3') MercedesBenz ID is:
+ div #{carid}
+ div.row
+ div(class='mercedesAttr mr-3') MercedesBenz Model is:
+ div #{carModel}
+ div.row
+ div(class='mercedesAttr mr-3') MercedesBenz price is:
+ div #{carPrice}
+ div.row
+ div(class='mercedesAttr mr-3') MercedesBenz Color is:
+ div #{carColor}
