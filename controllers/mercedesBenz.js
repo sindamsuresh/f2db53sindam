@@ -124,4 +124,18 @@ exports.mercedesBenz_create_Page = function (req, res) {
     }
 };
 
+// Handle building the view for updating a mercedesBenz.
+// query provides the id
+exports.mercedesBenz_update_Page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await MercedesBenz.findById(req.query.id)
+        res.render('mercedesBenzupdate', { title: 'MercedesBenz Update', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
 
