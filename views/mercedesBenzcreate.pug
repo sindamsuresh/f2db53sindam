@@ -14,7 +14,6 @@ block content
   input(type="submit")
  script.
   document.forms['MercedesBenzForm'].addEventListener('submit', (event) => {
-  console.log('testtt');
   event.preventDefault();
   // TODO do something here to show user that form is being submitted
   fetch(event.target.action, {
