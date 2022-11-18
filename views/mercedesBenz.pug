@@ -4,10 +4,15 @@ block content
   h1= title
   - var results = results
     div(class = 'container-fluid')
-      div(class = 'row')
-        each item,index in results 
-          div(class="col-sm-2", onClick=`buy(${index})`) CarModel : #{item["carModel"]} <br> CarPrice : #{item["carPrice"]} <br> CarColor: #{item["carColor"]}
+      div(class = 'row m-1')
+        each item,index in results
+         - let destination = `dispatch(\"/mercedesBenz/update?id=${item._id}\")`
+          div(class="row-sm-2", class="m-1") CarModel : #{item["carModel"]} <br> CarPrice : #{item["carPrice"]} <br> CarColor: #{item["carColor"]}
+            button.btn(class="btn-primary m1-1", onClick=destination) Update
           script.
             function buy(val) {
               alert(`You purchased item ${val}`)
+            }
+            function dispatch(path){
+              window.location.href=path
             }
