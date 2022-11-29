@@ -6,7 +6,11 @@ const mercedesBenzSchema = mongoose.Schema({
         maxLength: 15
     },
     carPrice: Number,
-    carColor: String
+    carColor: {
+        type: String,
+        minLength: 3,
+        maxLength: 15
+    },
 })
 
 module.exports = mongoose.model("MercedesBenz", mercedesBenzSchema)
