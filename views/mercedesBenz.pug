@@ -1,14 +1,20 @@
 extends layout
 
 block content
+  -let create = `dispatch(\"mercedesBenz/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create
   h1= title
   - var results = results
     div(class = 'container-fluid')
       div(class = 'row m-1')
         each item,index in results
          - let destination = `dispatch(\"/mercedesBenz/update?id=${item._id}\")`
+         - let detailView=`dispatch(\"/mercedesBenz/detail?id=${item._id}\")`
+         - let deleteView=`dispatch(\"/mercedesBenz/delete?id=${item._id}\")`
           div(class="row-sm-2", class="m-1") CarModel : #{item["carModel"]} <br> CarPrice : #{item["carPrice"]} <br> CarColor: #{item["carColor"]}
             button.btn(class="btn-primary m1-1", onClick=destination) Update
+            button.btn( class="btn-info ml-2", onclick=detailView ) Detail View Page
+            button.btn( class="btn-danger ml-2", onclick=deleteView ) Delete
           script.
             function buy(val) {
               alert(`You purchased item ${val}`)

@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 const mercedesBenzSchema = mongoose.Schema({
-    carModel: String,
+    carModel: {
+        type: String,
+        minLength: 4,
+        maxLength: 15
+    },
     carPrice: Number,
     carColor: String
 })
